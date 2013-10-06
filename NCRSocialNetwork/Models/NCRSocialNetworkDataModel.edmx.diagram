@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7a239cf9aecd46e88b232d3ce2ed0503" Name="Diagram1" ZoomLevel="100" >
+        <EntityTypeShape EntityType="NCRSocialNetworkDataModel.User" Width="1.625" PointX="7.5" PointY="8.375" />
+        <EntityTypeShape EntityType="NCRSocialNetworkDataModel.Club" Width="1.75" PointX="3" PointY="4.625" />
+        <EntityTypeShape EntityType="NCRSocialNetworkDataModel.Event" Width="1.625" PointX="10.375" PointY="6.75" />
+        <AssociationConnector Association="NCRSocialNetworkDataModel.UserClubModerator" />
+        <AssociationConnector Association="NCRSocialNetworkDataModel.UserEventCreated" />
+        <AssociationConnector Association="NCRSocialNetworkDataModel.ClubEvent" />
+        <EntityTypeShape EntityType="NCRSocialNetworkDataModel.Key" Width="1.5" PointX="0.75" PointY="5.25" />
+        <AssociationConnector Association="NCRSocialNetworkDataModel.KeyClub" />
+        <AssociationConnector Association="NCRSocialNetworkDataModel.KeyEvent" />
+        <EntityTypeShape EntityType="NCRSocialNetworkDataModel.ClubSubscribe" Width="1.75" PointX="4.875" PointY="8.875" />
+        <EntityTypeShape EntityType="NCRSocialNetworkDataModel.Comment" Width="1.75" PointX="1" PointY="9.125" />
+        <AssociationConnector Association="NCRSocialNetworkDataModel.KeyComment" />
+        <AssociationConnector Association="NCRSocialNetworkDataModel.UserComment" />
+        <EntityTypeShape EntityType="NCRSocialNetworkDataModel.EventLikeDislike" Width="2" PointX="10.125" PointY="11.375" />
+        <AssociationConnector Association="NCRSocialNetworkDataModel.EventEventLikeDislike" />
+        <AssociationConnector Association="NCRSocialNetworkDataModel.UserEventLikeDislike" />
+        <EntityTypeShape EntityType="NCRSocialNetworkDataModel.EventRequest" Width="2.25" PointX="7.625" PointY="4.375" />
+        <AssociationConnector Association="NCRSocialNetworkDataModel.ClubEventRequest" />
+        <AssociationConnector Association="NCRSocialNetworkDataModel.UserEventRequest" />
+        <AssociationConnector Association="NCRSocialNetworkDataModel.UserClubSubscribe" />
+        <AssociationConnector Association="NCRSocialNetworkDataModel.ClubClubSubscribe" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

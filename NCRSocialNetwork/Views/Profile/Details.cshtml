@@ -1,0 +1,58 @@
+﻿@model NCRSocialNetwork.ViewModels.ProfileViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br>
+<div class="profile-section-main">
+	<h3><b>@Model.Profile.UserFirstName @Model.Profile.UserLastName</b></h3>
+	@if(Model.BaseUser.UserDisplayPicture != null)
+    {
+        <img src='@Url.Content(Model.BaseUser.UserDisplayPicture)' alt="" width = "60%">	
+    }
+    else
+    {
+        <img src='@Url.Content("~/Content/Images/profile-picture_07.png")' alt="" width = "60%">		
+    }
+    <div id="profile-data-main">
+		<p><b>Job Role:</b> @Model.Profile.UserRole</p>
+		<p><b>Team:</b> CRM</p>
+		<p><b>Mobile No:</b> @Model.Profile.UserContactNo </p>
+		<p><b>Email ID:</b> @Model.Profile.UserEmail </p>
+		<p><b>Hobbies:</b> @Model.Profile.UserHobbies </p>
+		<p><b>Technologies:</b> @Model.Profile.UserTechnologies</p>	
+	</div>
+</div>
+<br>
+<ul class="tabs">
+	<li><a href="#activites-section">All Activities</a></li>
+	<li><a href="#comments-section">Comments</a></li>
+	<li><a href="#edit-profile-section">Edit Profile</a></li>
+</ul>
+<br />
+<div id="activites-section" class="articles-section">
+    <h3>All Activites section</h3>
+</div>
+<div id="comments-section" class="articles-section">
+    <h3>Comments section</h3>
+</div>
+<div id="edit-profile-section" class="articles-section">
+    <form class="form-settings" action="/Profile/UpdateProfile/@Model.Profile.UserId" method="post" enctype="multipart/form-data">
+	    <div class="form_settings">
+            <p><span>First Name:</span> <input type = 'text' id="UserFirstName" name='UserFirstName' value="@Model.Profile.UserFirstName"/></p>
+            <p><span>Last Name:</span> <input type = 'text' id="UserLastName" name='UserLastName' value="@Model.Profile.UserLastName" /></p>
+            <p><span>Email:</span> <input type = 'text' id="UserEmail" name='UserEmail' value="@Model.Profile.UserEmail" /></p>
+            <p><span>Contact No:</span> <input type = 'text' id="UserContactNo" name='UserContactNo' value="@Model.Profile.UserContactNo" /></p>
+            <p><span>Hobbies:</span> <input type = 'text' id="UserHobbies" name='UserHobbies' value="@Model.Profile.UserHobbies"  /></p>
+            <p><span>Technologies:</span> <input type = 'text' id="UserTechnologies" name='UserTechnologies' value="@Model.Profile.UserTechnologies"  /></p>
+            <p><span>Profile Picture:</span> <input type = 'file' id="UserDisplayPicture" name='UserDisplayPicture' style="float:right;"/></p>
+            <input id="UserId" name="UserId" value="@Model.Profile.UserId" hidden/>
+	        <p ><span>&nbsp</span>
+                 <input class = 'submit' type = 'submit' value = 'Submit'>
+	            <input class = 'submit' type = 'reset' value = 'Clear'>
+	        </p>
+        </div>
+    </form>
+</div>
+<br />

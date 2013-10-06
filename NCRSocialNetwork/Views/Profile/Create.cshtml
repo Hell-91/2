@@ -1,0 +1,99 @@
+﻿@model NCRSocialNetwork.Models.User
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>User</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserFirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserFirstName)
+            @Html.ValidationMessageFor(model => model.UserFirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserLastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserLastName)
+            @Html.ValidationMessageFor(model => model.UserLastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserPassword)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserPassword)
+            @Html.ValidationMessageFor(model => model.UserPassword)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserRole)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserRole)
+            @Html.ValidationMessageFor(model => model.UserRole)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserEmail)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserEmail)
+            @Html.ValidationMessageFor(model => model.UserEmail)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserContactNo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserContactNo)
+            @Html.ValidationMessageFor(model => model.UserContactNo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserHobbies)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserHobbies)
+            @Html.ValidationMessageFor(model => model.UserHobbies)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserTechnologies)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserTechnologies)
+            @Html.ValidationMessageFor(model => model.UserTechnologies)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserDisplayPicture)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserDisplayPicture)
+            @Html.ValidationMessageFor(model => model.UserDisplayPicture)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

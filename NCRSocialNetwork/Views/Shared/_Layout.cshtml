@@ -1,0 +1,137 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - NCR SocialNetwork</title>	
+</head>
+<body>
+	<div id="main_body">
+		<header>
+		</header>
+
+		<nav>
+            <a href="/" style="width: auto; display: inline; margin-left: 1em; margin-right: 0.8em;">
+                <img src="/Content/Images/home_icon.png" alt="Alternate Text" width="25em" height="25em" style="display: inline; margin-top: 0.6em; " 
+                    onmouseover="this.src='/Content/Images/home_icon_hover.png'" onmouseout="this.src='/Content/Images/home_icon.png'"/>
+            </a>
+			<ul>
+                @foreach (var Club in @Model.BaseClub)
+                {
+                    <li>@Html.ActionLink((string)@Club.ClubName, (string)@Club.ClubId.ToString(), "Clubs")</li>
+                }
+                <li>@Html.ActionLink("Profile", (string) @Model.BaseUser.UserId.ToString(), "Profile")</li>
+				<li>@Html.ActionLink("Admin", "", "Admin")</li>		
+                	
+			</ul>				
+		</nav>
+
+		<!--Main body content starts here-->
+		<div id="content">
+			<!--Main Section: Actual website data goes in this section-->
+			<section id="main_section">
+				<br>				
+				@RenderBody()                	
+			</section>
+
+            <!--Sidebar: Userinfo and Login Information-->
+			<aside>
+				@RenderSection("Aside", required: false)
+			</aside>
+
+		</div>
+		<footer>
+			<p>&copy 2013 NCR CORPORATION. ALL RIGHTS RESERVED.</p>
+		</footer>
+	</div>   
+    
+    @Scripts.Render("~/bundles/ajaxjquery")    
+    @Styles.Render("~/Content/css")   
+    <script type="text/javascript">
+        $(document).ready(function () {
+        });
+        $(window).load(function() {
+            $('.flexslider').flexslider();
+        });
+        function myonsuccess() {
+            //disable animated gif
+            $(".UserComment").val("");
+        }
+        function showeventlikeunlike(EventId) {
+            $("#like-dislike-" + EventId).toggle();
+            $("#event_" + EventId + "_like").css("display", "none");
+            $("#event_" + EventId + "_dislike").css("display", "none");
+            $("#event_" + EventId + "_unlike").css("display", "inline-block");
+            showcomments(EventId);
+        }
+
+        function hideeventlikeunlike(EventId) {
+            $("#like-dislike-" + EventId).toggle();
+            $("#event_" + EventId + "_like").css("display", "inline-block");
+            $("#event_" + EventId + "_dislike").css("display", "inline-block");
+            $("#event_" + EventId + "_unlike").css("display", "none");
+            showcomments(EventId);
+        }
+
+        function showcomments(EventId) {
+            $("#like-dislike-" + EventId).show();
+            $("#comments-" + EventId).css("display", "block");
+        }
+
+        function hidecomments(EventId) {
+        }
+
+        function disableEventButton(EventId) {
+            $("AddEventToClub-" + EventId).bind('click', function (e) {
+                alert("#AddEventToClub-" + EventId);
+                e.preventDefault();
+            })
+        }
+
+        function reloadClubPage() {
+            location.reload();
+        }
+
+        function showAddEvent(id) {
+            alert("#F_" + id);
+            $("#F_"+id).css("display", "block");
+        }
+
+        $('ul.tabs').each(function () {
+            // For each set of tabs, we want to keep track of
+            // which tab is active and it's associated content
+            var $active, $content, $links = $(this).find('a');
+
+            // If the location.hash matches one of the links, use that as the active tab.
+            // If no match is found, use the first link as the initial active tab.
+            $active = $($links.filter('[href="' + location.hash + '"]')[0] || $links[0]);
+            $active.addClass('active');
+            $content = $($active.attr('href'));
+
+            // Hide the remaining content
+            $links.not($active).each(function () {
+                $($(this).attr('href')).hide();
+            });
+
+            // Bind the click event handler
+            $(this).on('click', 'a', function (e) {
+                // Make the old tab inactive.
+                $active.removeClass('active');
+                $content.hide();
+
+                // Update the variables with the new link and content
+                $active = $(this);
+                $content = $($(this).attr('href'));
+
+                // Make the tab active.
+                $active.addClass('active');
+                $content.show();
+
+                // Prevent the anchor's default click action
+                e.preventDefault();
+            });
+        });
+
+    </script>
+    @RenderSection("Scripts", required: false)	
+</body>
+</html>

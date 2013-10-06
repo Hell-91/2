@@ -1,0 +1,58 @@
+﻿@model NCRSocialNetwork.ViewModels.EventViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="event-description-div">
+    
+    <h3>Event Details</h3>
+	<br />
+    <p><b>Event:</b> @Model.Event.EventName</p>
+	<p><b>Description:</b>  @Model.Event.EventDescription</p>
+	<p><b>Club:</b> @Model.Event.Club.ClubName</p>
+	<p><b>Date:</b>  @Model.Event.EventCreatedTime.ToString("ddd d MMM")</p>
+	<p><b>Venue:</b>  @Model.Event.EventVenue</p>
+</div>
+
+<ul class="tabs">
+    <li><a href="#comments-section">Comments</a></li>
+    <li><a href="#photos-section">Photos</a></li>
+    <li><a href="#videos-section">Videos</a></li>
+    <li><a href="#edit-event-section">Edit Event</a></li>
+</ul>
+
+<div id="articles-section" class="articles-section">	
+    <br />
+    <div id="comments-section" class="articles-section ">
+        <h2>Comments Section</h2>
+    </div>
+    <div id="photos-section" class="articles-section">
+        <h2>Photos Section</h2>
+    </div>
+    <div id="videos-section" class="articles-section">
+        <h2>Videos Section</h2>
+    </div>
+    <div id="edit-event-section" class="articles-section">
+        <form action="/Event/Edit/@Model.Event.EventId" method="post">
+            <div class="form_settings">
+		        <p><span>Event Name:</span> <input type = 'text' id="EventName" name='EventName' value="@Model.Event.EventName"/></p>
+		        <p><span>Description:</span> <textarea id="EventDescription" name="EventDescription">@Model.Event.EventDescription</textarea></p>
+		        <p style="margin-top: 3.5em;"><span>Event Date & Time:</span><input type = 'text' id="EventDateTime" name='EventDateTime' value="@Model.Event.EventDateTime"/></p>
+		        <p><span>Event Venue:</span><input type = 'text' id="EventVenue" name='EventVenue' value="@Model.Event.EventVenue"/></p>
+                <input id="EventId" name="EventId" value="@Model.Event.EventId" hidden />
+                <input id="EventClubId" name="EventClubId" value="@Model.Event.EventClubId" hidden />
+                <input id="EventCreatedBy" name="EventCreatedBy" value="@Model.Event.EventCreatedBy" hidden />
+                <input id="EventCreatedTime" name="EventCreatedTime" value="@Model.Event.EventCreatedTime" hidden />
+		        <p><span>&nbsp</span>
+                    <input class = 'submit' type = 'submit' value = 'Update'>
+		            <input class = 'submit' type = 'reset' value = 'Clear'>
+		        </p>
+		    </div>
+        </form>
+    </div>
+    <br />
+</div>
+

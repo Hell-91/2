@@ -1,0 +1,50 @@
+﻿@model NCRSocialNetwork.Models.Club
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Club</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ClubName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ClubName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ClubDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ClubDescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.User.UserFirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.User.UserFirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ClubThumbnailPath)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ClubThumbnailPath)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ClubImagePath)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ClubImagePath)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ClubId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

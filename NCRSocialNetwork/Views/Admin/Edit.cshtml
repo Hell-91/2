@@ -1,0 +1,52 @@
+﻿@model NCRSocialNetwork.Models.ClubEvent
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ClubEvent</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClubEventsId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ClubEventsId)
+            @Html.ValidationMessageFor(model => model.ClubEventsId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClubId, "Club")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ClubId", String.Empty)
+            @Html.ValidationMessageFor(model => model.ClubId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EventId, "Event")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("EventId", String.Empty)
+            @Html.ValidationMessageFor(model => model.EventId)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

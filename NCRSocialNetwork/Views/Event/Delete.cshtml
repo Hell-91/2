@@ -1,0 +1,67 @@
+﻿@model NCRSocialNetwork.Models.Event
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Event</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EventName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EventName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EventDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EventDescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Club.ClubName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Club.ClubName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EventVenue)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EventVenue)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EventDateTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EventDateTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.User.UserFirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.User.UserFirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EventCreatedTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EventCreatedTime)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

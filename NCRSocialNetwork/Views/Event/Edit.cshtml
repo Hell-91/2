@@ -1,0 +1,85 @@
+﻿@model NCRSocialNetwork.Models.Event
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Event</legend>
+
+        @Html.HiddenFor(model => model.EventId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EventName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EventName)
+            @Html.ValidationMessageFor(model => model.EventName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EventDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EventDescription)
+            @Html.ValidationMessageFor(model => model.EventDescription)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EventClubId, "Club")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("EventClubId", String.Empty)
+            @Html.ValidationMessageFor(model => model.EventClubId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EventVenue)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EventVenue)
+            @Html.ValidationMessageFor(model => model.EventVenue)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EventDateTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EventDateTime)
+            @Html.ValidationMessageFor(model => model.EventDateTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EventCreatedBy, "User")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("EventCreatedBy", String.Empty)
+            @Html.ValidationMessageFor(model => model.EventCreatedBy)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EventCreatedTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EventCreatedTime)
+            @Html.ValidationMessageFor(model => model.EventCreatedTime)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

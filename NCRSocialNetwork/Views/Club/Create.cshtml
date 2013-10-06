@@ -1,0 +1,67 @@
+﻿@model NCRSocialNetwork.Models.Club
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Club</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClubName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ClubName)
+            @Html.ValidationMessageFor(model => model.ClubName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClubDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ClubDescription)
+            @Html.ValidationMessageFor(model => model.ClubDescription)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClubModerator, "User")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ClubModerator", String.Empty)
+            @Html.ValidationMessageFor(model => model.ClubModerator)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClubThumbnailPath)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ClubThumbnailPath)
+            @Html.ValidationMessageFor(model => model.ClubThumbnailPath)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClubImagePath)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ClubImagePath)
+            @Html.ValidationMessageFor(model => model.ClubImagePath)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

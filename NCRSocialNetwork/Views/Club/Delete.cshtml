@@ -1,0 +1,53 @@
+﻿@model NCRSocialNetwork.Models.Club
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Club</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ClubName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ClubName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ClubDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ClubDescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.User.UserFirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.User.UserFirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ClubThumbnailPath)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ClubThumbnailPath)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ClubImagePath)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ClubImagePath)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
