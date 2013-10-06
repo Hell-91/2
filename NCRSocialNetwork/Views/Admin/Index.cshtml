@@ -39,16 +39,21 @@
                                 @{
                                     i++;
                                 }
-						        <input type="button" onclick="showAddEvent('@Event.EventRequestId.ToString()')" id="" value="Add"/>
+						        <input type="button" onclick="showAddEvent('@Event.EventRequestId.ToString()', '@i')" id="" value="Add"/>
 						        <input type="button" onclick="" id="D_@Event.EventRequestId" value="Delete"/>
 					        </td>
 				        </tr>
                     }
 			    </table>
+                <input type="text" value="@i" id="totalEventRequests" hidden />
+                @{i = 0;}
                 @foreach(var Event in @Model.EventRequests) 
                 {
-                    <div id="new-event-section" class="articles-section" style="display: none;">
-                        <form class="form-settings" action="/Event/Create" method="post" id="F_@Event.EventRequestClubId">
+                    {
+                        i++;
+                    }
+                    <div id="new-event-section" class="articles-section">
+                        <form class="form-settings hidden" action="/Event/Create" method="post" id="F_@i">
 	                        <div class="form_settings">
 			                    <p><span>Event Title:</span> <input type = 'text' id="EventName" name='EventName' value="@Event.EventRequestEventTitle"/></p>
 			                    <p><span>Description:</span> <textarea id="EventDescription" name="EventDescription">@Event.EventRequestEventDescription</textarea></p>
@@ -62,7 +67,7 @@
 			                    </p>
 		                    </div>
 	                    </form>
-                    </div>
+                    </div> 
                 }
 		</div>
 
@@ -80,8 +85,8 @@
                     @{
                         i = 1;    
                     }
-				    @foreach(var Event in @Model.Events) 
-                    {
+				    @foreach (var Event in @Model.Events)
+        {
                          <tr>
                             <td>@i</td>
 					        <td>@Event.EventName</td>
@@ -90,13 +95,13 @@
 					        <td>@Model.EventLikeDislikes.Count(e => e.EventLikeDislikeEventId == Event.EventId && e.EventLikeDislikeValue == 0)</td>
 					        <td>
                                 @{
-                                    i++;
+            i++;
                                 }
 						        <input type="button" onclick="location.href='/Event/Details/@Event.EventId.ToString()    '" value="Edit"/>
 						        <input type="button" onclick="location.href='/Event/Details/@Event.EventId.ToString()    '" value="Details"/>
 					        </td>
 				        </tr>
-                    }
+        }
 			    </table>
 			    <br>
 		    </div>
@@ -114,7 +119,8 @@
                     @{
                         i = 1;
                      }
-				    @foreach(var Club in @Model.Clubs) {   
+				    @foreach (var Club in @Model.Clubs)
+        {   
                         <tr>
 					        <td>@i</td>
 					        <td>@Club.ClubName</td>
@@ -125,10 +131,10 @@
 						        <input type="button" value="Edit"/>
 					        </td>
 				        </tr>
-                        {
-                            i++;
-                        }     
-                   }
+            {
+                i++;
+            }
+        }
 			    </table>
 			    <br>
 		    </div>
@@ -148,7 +154,8 @@
     
     <h3>Clubs</h3>
 	<article class="article_data">
-         @foreach(var Club in @Model.Clubs) {
+         @foreach (var Club in @Model.Clubs)
+         {
 		    @Html.ActionLink(@Club.ClubName, @Club.ClubId.ToString(), "Clubs")
          }
 	</article>	

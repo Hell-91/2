@@ -52,6 +52,9 @@
         $(window).load(function() {
             $('.flexslider').flexslider();
         });
+
+        $('.hidden').hide();
+
         function myonsuccess() {
             //disable animated gif
             $(".UserComment").val("");
@@ -92,8 +95,11 @@
         }
 
         function showAddEvent(id) {
-            alert("#F_" + id);
-            $("#F_"+id).css("display", "block");
+            alert("#F_" + id + "," + $('#totalEventRequests').val());
+            for (var i = 1; i < $('#totalEventRequests').val() ; i++) {
+                $("#F_" + i).hide();
+            }
+            $("#F_" + id).show();
         }
 
         $('ul.tabs').each(function () {
