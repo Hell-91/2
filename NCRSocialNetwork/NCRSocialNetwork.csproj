@@ -181,6 +181,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Content\FlexSlider.css" />
+    <Content Include="Content\Images\admin-panel.png" />
     <Content Include="Content\Images\background_header.jpg" />
     <Content Include="Content\Images\dislike.png" />
     <Content Include="Content\Images\footer.png" />
